@@ -26,6 +26,11 @@ class DataIngestion:
             train_df.to_csv(self.config.train_data_path)
             test_df.to_csv(self.config.test_data_path)
             logging.info("created train and test data")
+            return(
+                self.config.train_data_path,
+                self.config.test_data_path
+
+            )
         except Exception as e:
             raise CustomException(e,sys)
 
