@@ -2,6 +2,7 @@ from src.exception import CustomException
 from dataclasses import dataclass
 from src.logger import logging
 from src.utils import get_columns , save_object
+from src.components.data_training import DataTraining
 from sklearn.preprocessing import OneHotEncoder , StandardScaler
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
@@ -86,9 +87,11 @@ class DataTransformation:
 
 if __name__ =="__main__" :
     obj =DataTransformation()
+    model_train_obj = DataTraining()
     train_df_path =os.path.join('artifacts','train_student_data.csv')
     test_df_path = os.path.join('artifacts','test_student_data.csv')
-    obj.initilise_transformation(train_df_path,test_df_path)
+    train_arr , test_arr ,path = obj.initilise_transformation(train_df_path,test_df_path)
+    model_train_obj.model_training(train_arr , test_arr)
 
 
         
